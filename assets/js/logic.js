@@ -84,7 +84,7 @@ $(document).ready(function () {
             console.log(response);
             var results = response.data;
     
-            for (var i = 0; i < results.length; i++) {
+            for (var i = 0; i < 9; i++) {
                 var result = results[i];
                 var gifStatic = result.images['480w_still'].url;
                 var gifActive = result.images.original.url;
