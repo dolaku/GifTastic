@@ -1,10 +1,33 @@
 $(document).ready(function () {
 
-    var items = ['apple', 'banana', 'pie', 'sandwich', 'pizza', 'cake', 'donut', 'steak', 'cheese', 'broccoli', 'avocado', 'ice cream', 'cabbage', '', '', '', '', '', '', '', '', '', '', '', '', '', '',];
+    var items = ['apple', 'banana', 'pie', 'sandwich', 'pizza', 'cake', 'donut', 'steak', 'cheese', 'broccoli', 'avocado', 'ice cream', 'cabbage', 'carrots', 'bacon'];
+
+
+
+    // Display items to DOM
+    displayItems();
+
+    // loop through items array to create a list
+    function displayItems(){
+        $('#items-wrapper').empty();
+
+        for (var i = 0; i < items.length; i++) {
+            var itemsTransform = items.sort();
+            var list = itemsTransform[i];
+
+            $('#items-wrapper').append(`
+            <div class="item-btn" data-name="${list}">
+                ${list.toUpperCase()}
+            </div>
+            `)
+        };
+    }
+
 
     // Event listeners for submit button && enter key
     $("#submit-btn").on("click", function () {
         searchGiphy();
+        displayItems();
     });
 
     $(document).on('keypress', function (e) {
@@ -12,6 +35,7 @@ $(document).ready(function () {
             // Prevent page from refreshing
             e.preventDefault();
             searchGiphy();
+            displayItems();
         }
     });
 
@@ -19,18 +43,15 @@ $(document).ready(function () {
     // change state of gif - static or active
     $(document).on('click', '.gif', function () {
         var state = $(this).attr("data-state");
-        console.log(`Clicked: ${state}`);
 
         if (state === 'static') {
             $(this)
-            .attr('src', $(this).attr("data-animate"))
-            .attr('data-state', 'animate');
-            console.log(`Clicked change to ${state}`);
+                .attr('src', $(this).attr("data-animate"))
+                .attr('data-state', 'animate');
         } else {
             $(this)
-            .attr('src', $(this).attr("data-static"))
-            .attr('data-state', 'static');
-            console.log(`Clicked change to ${state}`);
+                .attr('src', $(this).attr("data-static"))
+                .attr('data-state', 'static');
         }
     });
 
@@ -40,7 +61,7 @@ $(document).ready(function () {
         var addItem = $('#add-item').val().trim();
 
         // GIPHY API key: jKzhnrJqtR9l5EHmGMzKHL22x5fbUIDA
-        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" +
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
             addItem + "&api_key=jKzhnrJqtR9l5EHmGMzKHL22x5fbUIDA";
 
         $('#gallery').empty();
