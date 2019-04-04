@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    var items = [];
+    var items = ['apple','banana','pie','sandwich','pizza','cake','donut','steak','cheese','','','','','','','','','','','','','','','','','','',];
 
     // Event listeners for submit button && enter key
     $("#submit-btn").on("click", function () {
@@ -34,12 +34,13 @@ $(document).ready(function () {
 
             for (var i = 0; i < results.length; i++) {
                 var result = results[i];
-                var imgSrc = result.images.original.url;
+                var gifStatic = result.images.downsized.url;
+                var gifActive = result.images.original.url;
                 var rating = result.rating;
 
                 $('#gif-wrapper').append(`
-                    <div class="card w-25 m-3">
-                        <img src="${imgSrc}" class="card-img-top" alt="...">
+                    <div class="card">
+                        <img src="${gifStatic}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <p class="card-text">Rating: ${rating}</p>
                         </div>
