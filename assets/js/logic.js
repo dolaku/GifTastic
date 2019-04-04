@@ -1,19 +1,39 @@
 $(document).ready(function () {
 
-    var items = ['apple','banana','pie','sandwich','pizza','cake','donut','steak','cheese','','','','','','','','','','','','','','','','','','',];
+    var items = ['apple', 'banana', 'pie', 'sandwich', 'pizza', 'cake', 'donut', 'steak', 'cheese', 'broccoli', 'avocado', 'ice cream', 'cabbage', '', '', '', '', '', '', '', '', '', '', '', '', '', '',];
 
     // Event listeners for submit button && enter key
     $("#submit-btn").on("click", function () {
         searchGiphy();
     });
 
-    $(document).on('keypress',function(e) {
-        if(e.which == 13) {
+    $(document).on('keypress', function (e) {
+        if (e.which == 13) {
             // Prevent page from refreshing
             e.preventDefault();
             searchGiphy();
         }
     });
+
+
+    // change state of gif - static or active
+    $(document).on('click', '.gif', function () {
+        var state = $(this).attr("data-state");
+        console.log(`Clicked: ${state}`);
+
+        if (state === 'static') {
+            $(this)
+            .attr('src', $(this).attr("data-animate"))
+            .attr('data-state', 'animate');
+            console.log(`Clicked change to ${state}`);
+        } else {
+            $(this)
+            .attr('src', $(this).attr("data-static"))
+            .attr('data-state', 'static');
+            console.log(`Clicked change to ${state}`);
+        }
+    });
+
 
     // ajax call
     function searchGiphy() {
@@ -23,7 +43,7 @@ $(document).ready(function () {
         var queryURL = "http://api.giphy.com/v1/gifs/search?q=" +
             addItem + "&api_key=jKzhnrJqtR9l5EHmGMzKHL22x5fbUIDA";
 
-        $('#gif-wrapper').empty();
+        $('#gallery').empty();
 
         $.ajax({
             url: queryURL,
@@ -34,24 +54,28 @@ $(document).ready(function () {
 
             for (var i = 0; i < results.length; i++) {
                 var result = results[i];
-                var gifStatic = result.images.downsized.url;
+                var state = 'static';
+                var gifStatic = result.images['480w_still'].url;
                 var gifActive = result.images.original.url;
-                var rating = result.rating;
+                var rating = result.rating.toUpperCase();
+                var title = result.title;
 
-                $('#gif-wrapper').append(`
-                    <div class="card">
-                        <img src="${gifStatic}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <p class="card-text">Rating: ${rating}</p>
-                        </div>
+                // update DOM -- add gifs to the gallery
+                $('#gallery').append(`
+                    <div class="img-wrapper">
+                        <img src="${gifStatic}"
+                            data-state="static"
+                            data-static="${gifStatic}"
+                            data-animate="${gifActive}"
+                            class="gif"
+                            alt="${title}">
+                        <span class="text-rating">Rated: ${rating}</span>
                     </div>
                 `);
-
-
-
-
             }
         });
     }
+
+
 
 });
