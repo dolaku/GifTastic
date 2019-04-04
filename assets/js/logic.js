@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    var items = ['banana', 'pie', 'sandwich', 'pizza', 'donut', 'steak', 'cheese', 'broccoli', 'avocado', 'ice cream', 'bacon', 'taco', 'cookie','egg'];
+    var items = ['banana', 'pizza', 'donut', 'steak', 'cheese', 'veggies', 'avocado', 'ice cream', 'bacon', 'taco', 'egg'];
 
     var searchTerm;
 
@@ -60,17 +60,14 @@ $(document).ready(function () {
         }
     });
 
+
     function runSearch() {
         searchTerm = $('#add-item').val().trim();
         callAPI(searchTerm);
         displayItems();
-        $('#add-item').empty()
+        $('#add-item').val('');
     }
-
-    // function searchGiphy() {
-    //     callAPI(searchTerm);
-    // }
-    
+   
     
     // ajax call
     function callAPI(keyword) {
