@@ -22,6 +22,7 @@
 }
 .item-btn:hover {
     background: linear-gradient(0deg, #020024 0%, #191972 90%, #4f87f8 100%);
+    color: #4f87f8;
 }
 .item-btn:active {
     background-color: #191972;
