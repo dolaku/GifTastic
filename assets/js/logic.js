@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    var items = ['banana', 'pizza', 'donut', 'steak', 'cheese', 'veggies', 'avocado', 'ice cream', 'bacon', 'taco', 'egg'];
+    var items = ['fruit', 'pizza', 'donut', 'steak', 'cheese', 'veggies', 'avocado', 'ice cream', 'bacon', 'taco', 'egg'];
 
     var searchTerm;
 
@@ -24,11 +24,12 @@ $(document).ready(function () {
     }
 
 
-    // Event listeners - submit button && enter key
+    // Listeners - submit button
     $("#submit-btn").on("click", function () {
         runSearch();
     });
-
+    
+    // Listener - enter button
     $(document).on('keypress', function (e) {
         if (e.which == 13) {
             // Prevent page from refreshing
@@ -36,8 +37,13 @@ $(document).ready(function () {
             runSearch();
         }
     });
-
-
+    
+    // Listeners - clear button
+    $("#clear-btn").on("click", function () {
+        items = [];
+        displayItems();
+    });
+    
     // Listener - search with item buttons
     $(document).on('click', '.item-btn', function () {
         var btnName = $(this).attr('data-name');
@@ -61,8 +67,15 @@ $(document).ready(function () {
     });
 
 
+    // Search and save to library
     function runSearch() {
         searchTerm = $('#add-item').val().trim();
+
+        // add item to library of buttons
+        if (searchTerm !== '') {
+            items.push(searchTerm);
+        }
+
         callAPI(searchTerm);
         displayItems();
         $('#add-item').val('');
@@ -84,7 +97,7 @@ $(document).ready(function () {
             console.log(response);
             var results = response.data;
     
-            for (var i = 0; i < 9; i++) {
+            for (var i = 0; i < 12; i++) {
                 var result = results[i];
                 var gifStatic = result.images['480w_still'].url;
                 var gifActive = result.images.original.url;
