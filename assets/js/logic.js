@@ -10,15 +10,24 @@ $(document).ready(function () {
     // loop through items array to create a list
     function displayItems() {
         $('#items-wrapper').empty();
+        $('#library-menu').empty();
         var itemsTransform = items.sort();
 
         for (var i = 0; i < items.length; i++) {
             var list = itemsTransform[i];
 
+            // adds button to quick access list
             $('#items-wrapper').append(`
-            <div class="item-btn" data-name="${list}">
-                ${list.toUpperCase()}
-            </div>
+                <div class="item-btn" data-name="${list}">
+                    ${list.toUpperCase()}
+                </div>
+            `)
+
+            // adds button to library dropdown menu
+            $('#library-menu').append(`
+                <button class="dropdown-item" type="button" data-name="${list}">
+                    ${list.toUpperCase()}
+                </button>
             `)
         };
     }
@@ -46,10 +55,17 @@ $(document).ready(function () {
     
     // Listener - search with item buttons
     $(document).on('click', '.item-btn', function () {
+        $('.active-btn').removeClass('active-btn');
+        $(this).addClass('active-btn');
         var btnName = $(this).attr('data-name');
         callAPI(btnName);
     });
-
+    
+    // Listener - search with library dropdown menu
+    $(document).on('click', '.dropdown-item', function () {
+        var btnName = $(this).attr('data-name');
+        callAPI(btnName);
+    });
 
     // Listener - change state of gif - static or active
     $(document).on('click', '.gif', function () {

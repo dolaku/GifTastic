@@ -24,19 +24,15 @@
                         <input type="text" class="form-control my-2" id="add-item" placeholder="Search . . .">
                         <div class="d-flex flex-wrap">
                             <div class="btn btn-primary my-2 mr-3" id="submit-btn">Submit</div>
-                            <div class="dropdown my-2">
+                            <div class="dropdown my-2 mr-3" id="library-dropdown">
                                 <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenu"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Library
                                 </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenu">
-                                    <button class="dropdown-item" type="button">Action</button>
-                                    <button class="dropdown-item" type="button">Another action</button>
-                                    <button class="dropdown-item" type="button">Something else here</button>
-                                </div>
+                                <div class="dropdown-menu" id="library-menu" aria-labelledby="dropdownMenu"></div>
                             </div> <!-- End Dropdown Menu -->
+                            <div class="btn btn-secondary my-2" id="clear-btn">Clear Library</div>
                         </div>
-                        <div class="btn btn-secondary my-2" id="clear-btn">Clear Library</div>
                     </div>
                 </form>
             </div>

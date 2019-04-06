@@ -2,6 +2,9 @@
     font-family: 'Permanent Marker', Helvetica, sans-serif !important;
     user-select: none;
 }
+#library-dropdown {
+    display: none;
+}
 #items-wrapper {
     display: grid;
     grid-gap: 5px 15px;
@@ -60,6 +63,9 @@
     padding: 2px;
     text-align: center;
 }
+.active-btn {
+    color: #4f87f8;
+}
 
 @media only screen and (max-width: 850px) {
     #items-wrapper {
@@ -72,6 +78,9 @@
     }
 }
 @media only screen and (max-width: 767px) {
+    #library-dropdown {
+        display: block;
+    }
     #items-wrapper,
     #quick-access {
         display: none;
