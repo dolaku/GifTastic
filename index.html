@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link href="https://fonts.googleapis.com/css?family=Gochi+Hand|Permanent+Marker" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Gochi+Hand|Permanent+Marker" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>GifTastic</title>
@@ -21,24 +22,49 @@
                     <div class="form-group">
                         <h1 id="search-label">Add an item:</h1>
                         <input type="text" class="form-control my-2" id="add-item" placeholder="Search . . .">
-                        <div class="btn btn-primary my-2" id="submit-btn">Submit</div>
+                        <div class="d-flex flex-wrap">
+                            <div class="btn btn-primary my-2 mr-3" id="submit-btn">Submit</div>
+                            <div class="dropdown my-2">
+                                <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenu"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Library
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenu">
+                                    <button class="dropdown-item" type="button">Action</button>
+                                    <button class="dropdown-item" type="button">Another action</button>
+                                    <button class="dropdown-item" type="button">Something else here</button>
+                                </div>
+                            </div> <!-- End Dropdown Menu -->
+                        </div>
                         <div class="btn btn-secondary my-2" id="clear-btn">Clear Library</div>
                     </div>
                 </form>
             </div>
+            <h3 id="quick-access">Quick Access:</h3>
             <div id="items-wrapper"></div>
         </div>
 
         <div class="col-sm-12 col-md-8 mb-3">
-            <div id="gallery"></div>
+            <div id="gallery">
+                <div>
+                    <h3 class="text-center w-75 mt-5 mx-auto">Search for your favorite gifs or use the existing library.</h3>
+                    <h5 class="text-center mt-4">Then click the gif to see it in action!</h5>
+                </div>
+            </div>
         </div>
     </div>
 
 
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <script src="./assets/js/logic.js"></script>

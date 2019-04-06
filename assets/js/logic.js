@@ -3,16 +3,16 @@ $(document).ready(function () {
     var items = ['fruit', 'pizza', 'donut', 'steak', 'cheese', 'veggies', 'avocado', 'ice cream', 'bacon', 'taco', 'egg'];
 
     var searchTerm;
-
+    
     // Display items to DOM
     displayItems();
-
+    
     // loop through items array to create a list
     function displayItems() {
         $('#items-wrapper').empty();
+        var itemsTransform = items.sort();
 
         for (var i = 0; i < items.length; i++) {
-            var itemsTransform = items.sort();
             var list = itemsTransform[i];
 
             $('#items-wrapper').append(`
