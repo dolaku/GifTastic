@@ -4,4 +4,4 @@
 
 https://dolaku.github.io/GifTastic/
 
-![GifTastic](./assets/images/GifTastic.png)
+![img](./assets/images/GifTastic.png)
